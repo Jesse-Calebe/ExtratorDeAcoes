@@ -3,36 +3,23 @@ import os
 
 
 class SetupDB:
+    @staticmethod
     def run():
-        def criaTabela(cursor, tabela, listaCampos):
-            camposTexto = ''
-
-            for campo in listaCampos:
-                camposTexto += campo + ', '
-            
-            camposTexto = camposTexto[0:-2]
-                
-            cursor.execute(f'CREATE TABLE IF NOT EXISTS {tabela}({camposTexto})')
-
-
-        path = r'{}\db\database.db'.format(os.getcwd())
-
-        conexao = sql.connect(path)
+        conexao = sql.connect(f'{os.getcwd()}\\db\\database.db')
         cursor  = conexao.cursor()
-
+        
         camposSender = [
             'id integer primary key',
             'email text',
             'senha text'
         ]
+        SetupDB.criaTabela(cursor, 'Sender', camposSender)
 
-        criaTabela(cursor, 'Sender', camposSender)
-
-        email = input('Email: ')
-        senha = input('Senha: ')
-
-        cursor.execute(f'INSERT INTO "Sender" ("id", "email", "senha") VALUES (1, "{email}", "{senha}")')
+        cursor.execute(f'INSERT INTO "Sender" VALUES (1, "{input("""Email: """)}", "{input("""Senha: """)}")')
+        
         conexao.commit()
-
-
         conexao.close()
+
+    @staticmethod
+    def criaTabela(cursor, tabela, listCampos):
+        cursor.execute(f'CREATE TABLE IF NOT EXISTS {tabela}({", ".join(listCampos)})')
