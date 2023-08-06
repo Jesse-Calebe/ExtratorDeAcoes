@@ -7,10 +7,11 @@ pip install pandas
 pip install openpyxl
 ```
 
-## Uso
+## Como usar
+Configuração inicial
 ``` bash
 python -m setupConfigs
 ```
 Após execução do comando acima no prompt vai ser pedido em sequência as seguintes informações:
-Email: <email configurado no serviço smtp>
-Senha: <senha configurada para o email informado>
+Email: <email_configurado_no_serviço_smtp>
+Senha: <senha_configurada_para_o_email_informado>
