@@ -8,9 +8,11 @@ class SetupDB:
         conexao = sql.connect(f'{os.getcwd()}\\db\\database.db')
         cursor  = conexao.cursor()
         
-        camposSender = ['id integer primary key',
-                        'email text',
-                        'senha text']
+        camposSender = [
+            'id integer primary key',
+            'email text',
+            'senha text'
+        ]
         SetupDB.criaTabela(cursor, 'Sender', camposSender)
 
         cursor.execute(f'INSERT INTO "Sender" VALUES (1, "{input("""Email: """)}", "{input("""Senha: """)}")')
