@@ -71,5 +71,3 @@ class SOST:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context= contexto) as smtp:
             smtp.login(self.sender.get('email'), self.sender.get('senha'))
             smtp.sendmail(self.sender.get('email'), self.receivers, emailMessage.as_string())
-
-email = SOST()
