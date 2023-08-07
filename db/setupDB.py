@@ -10,12 +10,17 @@ class SetupDB:
         
         camposSender = [
             'id integer primary key',
+            'tipo text',
             'email text',
             'senha text'
         ]
-        SetupDB.criaTabela(cursor, 'Sender', camposSender)
+        SetupDB.criaTabela(cursor, 'Emails', camposSender)
 
-        cursor.execute(f'INSERT INTO "Sender" VALUES (1, "{input("""Email: """)}", "{input("""Senha: """)}")')
+        print('Email do Sender')
+        cursor.execute(f'INSERT INTO "Emails" VALUES (1, "sender", "{input("""Email: """)}", "{input("""Senha: """)}")')
+        
+        print('Email do Receiver')
+        cursor.execute(f'INSERT INTO "Emails" VALUES (2, "receiver", "{input("""Email: """)}", "")')
         
         conexao.commit()
         conexao.close()
