@@ -2,3 +2,6 @@ venv
 contaDeEmail.txt
 database.db
 __pycache__
+log.txt
+extracoes
+run.bat
